@@ -1,4 +1,5 @@
 import { Controller, Post, Body } from '@nestjs/common';
+import { ValidateEmailDto } from './dto/validate-email.dto';
 import { ApiTags } from '@nestjs/swagger';
 import { AuthService } from './auth.service';
 import { RegisterDto } from './dto/register.dto';
@@ -15,7 +16,7 @@ export class AuthController {
   }
 
   @Post('validate-email')
-  validateEmail(@Body() dto: { email: string; code: string }) {
+  validateEmail(@Body() dto: ValidateEmailDto) {
     return this.authService.validateEmail(dto.email, dto.code);
   }
 
